@@ -1,8 +1,6 @@
 package com.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -10,12 +8,10 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @Entity(name = "department")
-public class Department {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long departmentId;
+public class Department extends BaseEntity {
 
     @Column(length = 100, nullable = false)
     private String address;

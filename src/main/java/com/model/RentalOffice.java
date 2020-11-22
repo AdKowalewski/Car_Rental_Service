@@ -1,8 +1,6 @@
 package com.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -10,12 +8,10 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @Entity(name = "rental_office")
-public class RentalOffice {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long rentalOfficeId;
+public class RentalOffice extends BaseEntity {
 
     @Column(length = 100, nullable = false)
     private String name;
@@ -24,10 +20,10 @@ public class RentalOffice {
     private String internetDomain;
 
     @Column(length = 100, nullable = false)
-    private String contactAddress;
+    private String address;
 
-    @Column(nullable = false)
-    private Worker owner;
+//    @Column(nullable = false)
+//    private Worker owner;
 
     @OneToMany(mappedBy = "rental_office", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Department> departments;

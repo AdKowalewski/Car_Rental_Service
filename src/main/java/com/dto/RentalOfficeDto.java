@@ -11,13 +11,13 @@ import java.util.List;
 @Setter
 public class RentalOfficeDto {
 
-    private Long rentalOfficeId;
+    private Long id;
 
     private String name;
 
     private String internetDomain;
 
-    private String contactAddress;
+    private String address;
 
     private Worker owner;
 

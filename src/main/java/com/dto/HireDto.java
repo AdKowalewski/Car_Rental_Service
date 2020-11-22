@@ -7,17 +7,15 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ReturnsDto {
+public class HireDto {
 
-    private Long returnsId;
+    private Long id;
 
     private Worker worker;
 
-    private String returnDate;
+    private String hireDate;
 
     private Reservation reservation;
-
-    private int supplement;
 
     private String comments;
 }

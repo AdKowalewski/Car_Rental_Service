@@ -1,26 +1,22 @@
 package com.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
-public class Loan {
+@AllArgsConstructor
+@ToString
+@Entity(name = "hire")
+public class Hire extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long loanId;
-
-    @Column(nullable = false)
+    @OneToOne(mappedBy = "hire", cascade = CascadeType.ALL, orphanRemoval = true)
     private Worker worker;
 
     @Column(nullable = false)
-    private String loanDate;
+    private String hireDate;
 
     @ManyToOne
     @JoinColumn(name = "reservation_id")

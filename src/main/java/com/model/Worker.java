@@ -1,8 +1,6 @@
 package com.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -10,12 +8,10 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
-public class Worker {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long workerId;
+@AllArgsConstructor
+@ToString
+@Entity(name = "worker")
+public class Worker extends BaseEntity {
 
     @Column(length = 50, nullable = false)
     private String firstName;
@@ -24,13 +20,10 @@ public class Worker {
     private String lastName;
 
     @Column(nullable = false)
-    private int age;
-
-    @Column(nullable = false)
     private LocalDateTime hireDate;
 
-    @Column(length = 50, nullable = false)
-    private String job; //Worker or Manager
+    @OneToOne(mappedBy = "worker", cascade = CascadeType.ALL, orphanRemoval = true)
+    private WorkerJob job; //Worker or Manager
 
     @ManyToOne
     @JoinColumn(name = "department_id")

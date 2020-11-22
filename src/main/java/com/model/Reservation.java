@@ -1,32 +1,33 @@
 package com.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.sql.Timestamp;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
-public class Reservation {
+@AllArgsConstructor
+@ToString
+@Entity(name = "reservation")
+public class Reservation extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long reservationId;
-
-    @Column(length = 50, nullable = false)
-    private String reservationDate;
-
-    @Column(nullable = false)
+    @OneToOne(mappedBy = "reservation", cascade = CascadeType.ALL, orphanRemoval = true)
     private Customer customer;
 
-    @Column(length = 50, nullable = false)
-    private String dateFrom;
+    @OneToOne(mappedBy = "reservation", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Car car;
 
-    @Column(length = 50, nullable = false)
-    private String dateTo;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @Column(name = "receiptDate")
+    private Timestamp receiptDate;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @Column(name = "returnDate")
+    private Timestamp returnDate;
 
     @ManyToOne
     @JoinColumn(name = "department_id")
@@ -37,5 +38,5 @@ public class Reservation {
     private Department departmentTo;
 
     @Column(nullable = false)
-    private int amount;
+    private BigDecimal totalCost;
 }

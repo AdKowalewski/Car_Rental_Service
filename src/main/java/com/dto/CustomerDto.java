@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class CustomerDto {
 
-    private Long customerId;
+    private Long id;
 
     private String firstName;
 

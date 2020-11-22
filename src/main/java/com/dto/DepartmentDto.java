@@ -11,7 +11,7 @@ import java.util.List;
 @Setter
 public class DepartmentDto {
 
-    private Long departmentId;
+    private Long id;
 
     private String address;
 

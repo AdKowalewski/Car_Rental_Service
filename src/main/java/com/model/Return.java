@@ -1,22 +1,19 @@
 package com.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
-public class Returns {
+@AllArgsConstructor
+@ToString
+@Entity(name = "return")
+public class Return extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long returnsId;
-
-    @Column(nullable = false)
+    @OneToOne(mappedBy = "return", cascade = CascadeType.ALL, orphanRemoval = true)
     private Worker worker;
 
     @Column(nullable = false)
@@ -26,7 +23,7 @@ public class Returns {
     @JoinColumn(name = "reservation_id")
     private Reservation reservation;
 
-    private int supplement;
+    private BigDecimal supplement;
 
     private String comments;
 }

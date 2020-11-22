@@ -5,17 +5,21 @@ import com.model.Worker;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
-public class LoanDto {
+public class ReturnDto {
 
-    private Long loanId;
+    private Long id;
 
     private Worker worker;
 
-    private String loanDate;
+    private String returnDate;
 
     private Reservation reservation;
+
+    private BigDecimal supplement;
 
     private String comments;
 }

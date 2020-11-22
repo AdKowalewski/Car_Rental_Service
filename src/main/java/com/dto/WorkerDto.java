@@ -10,13 +10,11 @@ import java.time.LocalDateTime;
 @Setter
 public class WorkerDto {
 
-    private Long workerId;
+    private Long id;
 
     private String firstName;
 
     private String lastName;
-
-    private int age;
 
     private LocalDateTime hireDate;
 

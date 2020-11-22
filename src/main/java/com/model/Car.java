@@ -1,21 +1,19 @@
 package com.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
-public class Car {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long carId;
+@AllArgsConstructor
+@ToString
+@Entity(name = "car")
+public class Car extends BaseEntity {
 
     @Column(length = 50, nullable = false)
     private String brand;
@@ -27,17 +25,17 @@ public class Car {
     private String bodyType;
 
     @Column(nullable = false)
-    private int productionDate;
+    private Integer productionDate;
 
     @Column(nullable = false)
-    private int mileage;
+    private BigDecimal mileage;
 
     @Column(length = 50, nullable = false)
     private String colour;
 
-    @Column(length = 50, nullable = false)
-    private String status;
+    @OneToOne(mappedBy = "car", cascade = CascadeType.ALL, orphanRemoval = true)
+    private CarStatus status;
 
     @Column(nullable = false)
-    private int amountPerDayOfRental;
+    private BigDecimal dailyFee;
 }

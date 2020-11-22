@@ -1,13 +1,16 @@
 package com.dto;
 
+import com.model.CarStatus;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.math.BigDecimal;
 
 @Getter
 @Setter
 public class CarDto {
 
-    private Long carId;
+    private Long id;
 
     private String brand;
 
@@ -15,13 +18,13 @@ public class CarDto {
 
     private String bodyType;
 
-    private int productionDate;
+    private Integer productionDate;
 
-    private int mileage;
+    private BigDecimal mileage;
 
     private String colour;
 
-    private String status;
+    private CarStatus status;
 
-    private int amountPerDayOfRental;
+    private BigDecimal dailyFee;
 }
