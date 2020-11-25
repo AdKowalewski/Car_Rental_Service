@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 @Entity(name = "rental_office")
-public class RentalOffice extends BaseEntity {
+public class RentalCorp extends BaseEntity {
 
     @Column(length = 100, nullable = false)
     private String name;

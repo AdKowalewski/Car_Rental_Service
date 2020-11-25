@@ -9,7 +9,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class RentalOfficeDto {
+public class RentalCorpDto {
 
     private Long id;
 
