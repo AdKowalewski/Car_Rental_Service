@@ -36,7 +36,7 @@ public class RentalCorpController {
     }
 
     @PostMapping
-    public ModelAndView submitUpdateRentalCorpForm(@ModelAttribute("dto") RentalCorpDto dto) {
+    public ModelAndView submitUpdateRentalCorpForm(@ModelAttribute("rentalCorpDto") RentalCorpDto dto) {
         rentalCorpService.save(RentalCorpMapper.INSTANCE.toEntity(dto));
         return new ModelAndView("redirect:/rentalCorps");
     }
@@ -48,7 +48,7 @@ public class RentalCorpController {
     }
 
     @PostMapping("/createRentalCorp")
-    public ModelAndView submitAddRentalCorpForm(@ModelAttribute("dto") RentalCorpDto dto, Model model) {
+    public ModelAndView submitAddRentalCorpForm(@ModelAttribute("rentalCorpDto") RentalCorpDto dto, Model model) {
         final RentalCorp rentalCorp = rentalCorpService.save(RentalCorpMapper.INSTANCE.toEntity(dto));
         model.addAttribute("successMsg", String.format("Rental corporation with id: %s was successfully created",
                 rentalCorp.getId()));

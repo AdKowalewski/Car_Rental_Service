@@ -36,7 +36,7 @@ public class CarController {
     }
 
     @PostMapping
-    public ModelAndView submitUpdateCarForm(@ModelAttribute("dto") CarDto dto) {
+    public ModelAndView submitUpdateCarForm(@ModelAttribute("carDto") CarDto dto) {
         carService.save(CarMapper.INSTANCE.toEntity(dto));
         return new ModelAndView("redirect:/cars");
     }
@@ -48,7 +48,7 @@ public class CarController {
     }
 
     @PostMapping("/createCar")
-    public ModelAndView submitAddCArForm(@ModelAttribute("dto") CarDto dto, Model model) {
+    public ModelAndView submitAddCarForm(@ModelAttribute("carDto") CarDto dto, Model model) {
         final Car car = carService.save(CarMapper.INSTANCE.toEntity(dto));
         model.addAttribute("successMsg", String.format("Car with id: %s was successfully created",
                 car.getId()));

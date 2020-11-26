@@ -36,7 +36,7 @@ public class DepartmentController {
     }
 
     @PostMapping
-    public ModelAndView submitUpdateDepartmentForm(@ModelAttribute("dto") DepartmentDto dto) {
+    public ModelAndView submitUpdateDepartmentForm(@ModelAttribute("departmentDto") DepartmentDto dto) {
         departmentService.save(DepartmentMapper.INSTANCE.toEntity(dto));
         return new ModelAndView("redirect:/departments");
     }
@@ -48,7 +48,7 @@ public class DepartmentController {
     }
 
     @PostMapping("/createDepartment")
-    public ModelAndView submitAddDepartmentForm(@ModelAttribute("dto") DepartmentDto dto, Model model) {
+    public ModelAndView submitAddDepartmentForm(@ModelAttribute("departmentDto") DepartmentDto dto, Model model) {
         final Department department = departmentService.save(DepartmentMapper.INSTANCE.toEntity(dto));
         model.addAttribute("successMsg", String.format("Department with id: %s was successfully created",
                 department.getId()));
